@@ -1,3 +1,4 @@
+# 根据用户输入的数字，输出矩形
 while True :
 	num = input("请输入一个正整数：")
 	if num.isdigit() and int(num) > 0:
