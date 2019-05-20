@@ -9,7 +9,7 @@ def gen_fun(num):
 	x = 0
 	while x < num:
 		a = yield x**2	#yield(放弃)，函数在此地方交出CPU控制权(停止运行)。 在调用next(),send()方法时再往下执行
-		if a == 100:	#上行的a可以接受send(100)函数的的传参.如100
+		if a == 100:	#上行的a可以接受send(100)函数的传参.如100
 			print('I am 100')
 		else:
 			x+=1
