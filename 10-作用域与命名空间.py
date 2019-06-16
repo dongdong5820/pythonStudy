@@ -20,4 +20,4 @@ def scope_test():
 
 
 scope_test()
-print("In global scope:%s" % spam)
+print("hello, In global scope:%s" % spam)
