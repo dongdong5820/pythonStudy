@@ -1,8 +1,10 @@
 '''
 数据库连接
 先要安装PyMySQL模块 ：pip3 install PyMySQL
+fetchone():获取下一个查询结果集。结果集是一个tuple对象
+fetchall():接受全部的返回结果行。也是tuple对象
 '''
-import pymysql
+import pymysql,time
 
 db_host = '10.40.6.26'
 db_port = 3306
@@ -29,6 +31,18 @@ data = cursor.fetchall()
 
 print(type(data))
 print(data)
+
+sql = 'UPDATE label SET end_time=%d WHERE id=143' % int(time.time())
+print(sql)
+try:
+	cursor.execute(sql)
+	affectedRows = cursor.rowcount
+	# 提交事务
+	connect.commit()
+	print('影响行数: %d'%affectedRows)
+except:
+	print('发生错误')
+	connect.rollback()	
 
 # 关闭游标
 cursor.close()
