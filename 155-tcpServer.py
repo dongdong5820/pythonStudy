@@ -26,7 +26,7 @@ newSocket, clientAddr = tcpSerSocket.accept()
 recvData = newSocket.recv(1024)
 print('接收到的数据为：%s'%recvData)
 # 发送一条数据给客户端
-newSocket.send("Thank you !")
+newSocket.send(b"Thank you !")
 # 关闭这个新的套接字。不再为这个客户端服务
 newSocket.close()
 # 关闭监听套接字。整个程序不再接受任何新的客户端连接

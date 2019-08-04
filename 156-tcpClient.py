@@ -4,23 +4,24 @@
 """
 author:ranlay
 date:2019/8/3 13:47
-desc: socket网络编程，tcp客户端编程
-    1.socket创建一个套接字
-    2.连接服务器端
-    3.recv/send接受发送数据
+desc: socket网络编程，tcp客户端长连接版本
 """
-from socket import *
+import socket
 # 创建socket
-clientSocket = socket(AF_INET, SOCK_STREAM)
-# 服务器ip和port
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 serverAddr = ("192.168.10.63", 7788)
 # 连接服务器
 clientSocket.connect(serverAddr)
-# 发送数据
-clientSocket.send(b"hello")
-# 接受数据
-recvData = clientSocket.recv(1024)
-print(recvData)
+while True:
+    msg = input('>>')
+    # 向服务器发送消息
+    clientSocket.send(msg.encode())
+    # 接受服务器消息
+    recvData = clientSocket.recv(1024)
+    print('<<%s'%recvData)
+    if msg == 'bye':
+        break
 
-# 关闭socket
+# 关闭socket连接
 clientSocket.close()
+
